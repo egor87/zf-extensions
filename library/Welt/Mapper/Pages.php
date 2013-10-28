@@ -17,13 +17,13 @@ class Welt_Mapper_Pages extends Welt_Mapper
 		'name'				=>		'name',
 		'nameEng'			=>		'name_eng',
 		'content'			=>		'content',
-		'contentEng'		=>		'content_eng',
+		'contentEng'			=>		'content_eng',
 		'link'				=>		'link',
 		'mvcParams'			=>		'mvc_params',
 		'visible'			=>		'visible',
 		'bannerImg'			=>		'banner_img',
-		'bannerText'		=>		'banner_text',
-		'bannerTextEng'		=>		'banner_text_eng',
+		'bannerText'			=>		'banner_text',
+		'bannerTextEng'			=>		'banner_text_eng',
 		'createdBy'			=>		'created_by',
 		'updatedBy'			=>		'updated_by',
 		'created'			=>		'created',
@@ -198,7 +198,7 @@ class Welt_Mapper_Pages extends Welt_Mapper
 			$this->langDependFields = array(
 				'name'			=>		$this->_map['nameEng'],
 				'content'		=>		$this->_map['contentEng'],
-				'banner_text'	=>		$this->_map['bannerTextEng']
+				'banner_text'		=>		$this->_map['bannerTextEng']
 			);
 		}
 		else
@@ -206,7 +206,7 @@ class Welt_Mapper_Pages extends Welt_Mapper
 			$this->langDependFields = array(
 				'name'			=>		$this->_map['name'],
 				'content'		=>		$this->_map['content'],
-				'banner_text'	=>		$this->_map['bannerText']
+				'banner_text'		=>		$this->_map['bannerText']
 			);
 		}
 	}
