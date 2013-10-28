@@ -20,7 +20,7 @@ abstract class Welt_Mapper
 	 * Шлюз к таблице
 	 * @var Zend_Db_Table_Abstract
 	 */
-    protected $_tableGateway = null;
+    	protected $_tableGateway = null;
 	
 	/**
 	 * Карта сопоставлений полей в таблице БД свойствам доменного объекта
@@ -103,7 +103,7 @@ abstract class Welt_Mapper
 	 * Установка шлюза таблицы
 	 * @return type 
 	 */
-    protected function _setGateway($tableGateway)
+    	protected function _setGateway($tableGateway)
 	{
 		$this->_tableGateway = $tableGateway;
 	}
@@ -112,7 +112,7 @@ abstract class Welt_Mapper
 	 * Получение установленного шлюза таблицы
 	 * @return type 
 	 */
-    public function _getGateway()
+    	public function _getGateway()
 	{
 		return $this->_tableGateway;
 	}
