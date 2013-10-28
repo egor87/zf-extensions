@@ -70,10 +70,10 @@ abstract class Welt_Mapper
 	 * Конструктор: установка языка, шлюза таблицы
 	 * @param string $lang 
 	 */
-	public function __construct($lang = '')
+	public function __construct($lang = NULL)
 	{
 		//Установка языка
-		if ($lang == '')
+		if (is_null($lang))
 		{
 			//Если язык установлен в реестре
 			if (Zend_Registry::isRegistered('lang'))
@@ -201,11 +201,6 @@ abstract class Welt_Mapper
 	 */
 	public function update(Welt_Entity $model)
 	{
-		//Сбрасываем кэш, если он установлен
-		if ($this->_cache instanceof Zend_Cache_Core)
-		{
-			$this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-		}
 		$updWhere = $this->_tableGateway->getAdapter()->quoteInto('id = ?', $model->id);
 		/*
 		 * Проходимся по свойствам модели и формируем массив данных для обновления
@@ -215,16 +210,15 @@ abstract class Welt_Mapper
 		$data = array();
 		foreach ($modelParams as $param => $value)
 		{
-			/**
-			 * Отбираем все параметры, кроме id и указанных в переменной $_updateIgnoreFields
-			 */
-			if ($param != 'id')
+			// Отбираем все параметры, кроме id и указанных в переменной $_updateIgnoreFields
+			if ($param == 'id')
 			{
-				$tableField = $this->findFieldMapByProp($param);
-				if ($tableField !== false && !in_array($tableField, $this->_updateIgnoreFields))
-				{
-					$data[$tableField] = $value;
-				}
+				continue;	
+			}
+			$tableField = $this->findFieldMapByProp($param);
+			if ($tableField !== false && !in_array($tableField, $this->_updateIgnoreFields))
+			{
+				$data[$tableField] = $value;
 			}
 		}
 		return $this->_tableGateway->update($data, $updWhere);
@@ -238,11 +232,6 @@ abstract class Welt_Mapper
 	 */
 	public function insert(Welt_Entity $model)
 	{
-		//Сбрасываем кэш, если он установлен
-		if ($this->_cache instanceof Zend_Cache_Core)
-		{
-			$this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-		}
 		/*
 		 * Проходимся по свойствам модели и формируем массив данных по записи
 		 * с помощью карты сопоставления
@@ -267,11 +256,6 @@ abstract class Welt_Mapper
 	 */
 	public function delete($model)
 	{
-		//Сбрасываем кэш, если он установлен
-		if ($this->_cache instanceof Zend_Cache_Core)
-		{
-			$this->_cache->clean(Zend_Cache::CLEANING_MODE_ALL);
-		}
 		//Если передан объект
 		if ($model instanceof Welt_Entity)
 		{
