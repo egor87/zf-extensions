@@ -7,18 +7,18 @@ class Welt_Model_Page extends Welt_Entity
 	 */
 	protected $_data = array(
 		//Свойства, заполняющиеся из текущей таблицы
-        'id'				=>		null,
+        	'id'				=>		null,
 		'pageType'			=>		null,
 		'name'				=>		'',
 		'nameEng'			=>		'',
 		'content'			=>		null,
-		'contentEng'		=>		null,
+		'contentEng'			=>		null,
 		'link'				=>		null,
 		'mvcParams'			=>		null,
 		'visible'			=>		1,
 		'bannerImg'			=>		null,
-		'bannerText'		=>		null,
-		'bannerTextEng'		=>		null,
+		'bannerText'			=>		null,
+		'bannerTextEng'			=>		null,
 		'createdBy'			=>		'',
 		'updatedBy'			=>		'',
 		'created'			=>		'',
